@@ -1,0 +1,40 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-28 06:05+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
+"1 : 2;\n"
+
+#: game/views.py:40
+msgid "Draw!"
+msgstr "¡Empate!"
+
+#: game/views.py:46 game/views.py:55
+msgid "You win!"
+msgstr "¡Ganas!"
+
+#: game/views.py:49 game/views.py:57
+msgid "You lose!"
+msgstr "¡Pierdes!"
+
+#: game/templates/game/play_game.html:95
+msgid "English"
+msgstr "Inglés"
+
+#: game/templates/game/play_game.html:96
+msgid "Spanish"
+msgstr "Español"

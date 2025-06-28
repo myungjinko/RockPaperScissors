@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.utils.translation import gettext as _
+from django.utils import translation
 import random
 from .models import Player
 
@@ -9,6 +11,16 @@ def play_game(request):
     result = None
     user_choice = None
     computer_choice = None
+
+    # Handle language switching
+    if request.method == 'POST' and 'set_language' in request.POST:
+        language = request.POST.get('language', 'en')
+        translation.activate(language)
+        request.session['django_language'] = language
+    else:
+        # Preserve current language from session
+        current_language = request.session.get('django_language', 'en')
+        translation.activate(current_language)
 
     # Initialize session variables for name and score
     if 'player_score' not in request.session:
@@ -28,24 +40,24 @@ def play_game(request):
         user_choice = request.POST.get('choice')
         computer_choice = random.choice(choices)
         if user_choice == computer_choice:
-            result = 'Draw!'
+            result = _('Draw!')
         elif (
             (user_choice == 'rock' and computer_choice == 'scissors') or
             (user_choice == 'paper' and computer_choice == 'rock') or
             (user_choice == 'scissors' and computer_choice == 'paper')
         ):
-            result = 'You win!'
+            result = _('You win!')
             request.session['player_score'] += 1
         else:
-            result = 'You lose!'
+            result = _('You lose!')
             request.session['computer_score'] += 1
 
         # Update player statistics
         if player_name and player_name.strip():
             player, created = Player.objects.get_or_create(name=player_name.strip())
-            if result == 'You win!':
+            if result == _('You win!'):
                 player.wins += 1
-            elif result == 'You lose!':
+            elif result == _('You lose!'):
                 player.losses += 1
             else:  # Draw
                 player.draws += 1
